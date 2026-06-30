@@ -1,0 +1,218 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+\usetheme{Madrid}
+\usecolortheme{seagull}
+}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title[Git Workshop]{Git Workshop} 
+
+\author{Jaime Canizales} 
+\institute[Hunter College] 
+{
+City University of New York \\ 
+\medskip
+\textit{jaime.canizales@hunter.cuny.edu} 
+}
+\date{\today} 
+\begin{document}
+
+
+\begin{frame}
+\titlepage 
+\end{frame}
+
+
+\begin{frame} \frametitle{Overview} 
+\tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}\frametitle{What is Git?}
+\begin{block}{What is Git?}
+Git is a distributed version control system used for tracking changes in source
+code during software development. It allows multiple developers to collaborate
+on projects by managing code versions, enabling branching, merging, and keeping
+a history of changes. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Key Features of Git}
+\begin{itemize}
+\item  \texttt{Version Control -} Tracks changes and allows you to revert to previous versions.
+\item  \texttt{Distributed System -} Every developer has a full copy of the repository, increasing reliability.
+\item  \texttt{Branching and Merging -} Developers can create branches for new features or bug fixes and merge them back into the main codebase.
+\item  \texttt{Collaboration -} Teams can collaborate without overwriting each other's work.
+\item  \texttt{Speed and Efficiency -} Git handles large projects efficiently. 
+\end{itemize}
+\end{frame}
+    
+
+\begin{frame}\frametitle{What is a Git Repo?}
+\begin{block}{What is a Git Repo?}
+A Git repository is a storage space where all the files, history of changes, 
+and version control data for a project are kept. It tracks the complete history
+of a project, allowing developers to manage and collaborate on code efficiently.\\
+You can identify a git repo by the presence of a .git repo. If you delete the
+.git repo, the current repo is no longer a git repo.\\
+\textbf{Draw Software Architecture}\\
+\textbf{Draw graph representation of git repo(edges are changes).}\\
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Types of Git Repositories}
+\begin{enumerate}
+\item \texttt{Local Repository -} Stored on your own computer, containing the full project history and working files.
+\item \texttt{Remote Repository -} Hosted on a server (e.g., GitHub, GitLab, Bitbucket) for collaboration with other developers.
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}\frametitle{Structure of Git Repositories}
+\begin{itemize}
+\item \texttt{Working Directory:} The actual files you are currently working on.
+\item \texttt{Staging Area (Index):} A space where changes are prepared before committing.
+\item \texttt{.git Directory:} Contains all the metadata, configurations, and object database (commit history).
+\item \texttt{Commits:} Snapshots of changes in the project over time.
+\end{itemize}
+\end{frame}
+
+
+\section{Technical Information}
+\begin{frame}\frametitle{Installing Git}
+    \begin{itemize}
+    \item \href{https://git-scm.com/downloads}{Git Install Link}
+    \end{itemize}
+    \end{frame}
+
+
+\begin{frame}\frametitle{Common Git Commands(starter)}
+\begin{itemize}
+\item \texttt{git init:} Initializes a new Git repository.
+\item \texttt{git remote add origin $<$link$>$:} associate a local repo with a remote repo. 
+\item \texttt{git clone:} Creates a copy of an existing repository.
+\item \texttt{git add:} Stages changes for a commit.
+\item \texttt{git rm:} removes staged changes
+\item \texttt{git commit:} Records a snapshot of all the tracked files in your directory(between commits only the set of changes is saved)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Common Git Commands(collaborative)}
+\begin{itemize}
+\item \texttt{git fetch:*} That downloads the latest changes from a remote repository without merging them into your current branch.
+\item \texttt{git push:*} Uploads commits to a remote repository.
+\item \texttt{git pull:*} Fetches and integrates changes from a remote repository.
+\item \texttt{git branch:*} Lists, creates, or deletes branches.(a pointer to tree) 
+\item \texttt{git checkout:*} Used to switch branches or restore files in your working directory.
+\end{itemize}
+\end{frame}
+
+    
+\begin{frame}\frametitle{Common Git Commands(combining)}
+\begin{itemize}
+\item \texttt{git merge:*} Combine branches(in your checkout branch, creates another commit that adds all changes from the commit specified in argument)(perserves history)
+\item \texttt{git rebase:*} Used to move or combine a sequence of commits to a new base commit. It creates a cleaner, linear project history by integrating changes from one branch onto another. Rewrites history to make it look like the changes happened sequentially.
+\item \texttt{git cherry-pick:} That allows you to apply a specific commit from one branch to another without merging the entire branch. 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Common Git Commands(show info)}
+\begin{itemize}
+\item \texttt{git log:} Show all commits on terminal.
+\item \texttt{git status:} Shows the status of changes. (think of staging area)
+\item \texttt{git tag:} Used to mark specific points in a repository's history—typically for releases (e.g., v1.0, v2.0). Tags are like bookmarks for important commits.
+\item \texttt{git describe:} Generates a human-readable name for the current commit based on the nearest tag, the number of commits since that tag, and the abbreviated commit hash.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{What is Github?}
+\begin{block}{What is Github?}
+GitHub is a cloud-based platform for version control and collaborative software
+development. It uses Git for tracking changes in code but adds powerful tools 
+for collaboration, project management, and deployment.\\
+Git is often used with platforms like GitHub, GitLab, and Bitbucket for 
+collaborative development. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{HEAD}
+\begin{itemize}
+\item \textbf{Defintion:} The symbolic name for the currently checked out commit.
+\item Normally HEAD points to a branch name.
+\item Detached head state just means head points to commit instead of a branch.
+\item \textbf{Relative Refs:} $\sim x$: go up x edges,  $\wedge x$: go to xth parents 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Other Common terms in git}
+\begin{itemize}
+\item \textbf{Remote Branch:} Is a branch that exist locally, and reflects the state of the remote repository.(upstream refers to this)
+\item \textbf{origin:} Common name used to refer to the remote repository.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{.gitignore}
+\begin{block}{.gitignore}
+The .gitignore file tells Git which files and directories to ignore in a 
+project. It prevents unnecessary or sensitive files from being tracked in
+version control.\textbf{Show Example}
+\end{block}
+\end{frame}
+    
+
+\begin{frame}\frametitle{ssh keys}
+\begin{block}{Problem Statement}
+SSH keys are a secure way to authenticate with GitHub without using a username
+and password every time you interact with your repositories. They use a 
+public-key cryptography system to establish a secure connection between your
+computer and GitHub.\\ 
+\href{https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account}{\textbf{SETUP LINK}}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{how to deal with more than one git account on one computer}
+\begin{enumerate}
+\item git clone $<$repo$>$
+\item git remote set-url origin git@github.com-PRTEST:JimsPrTest/git-workshop.git
+\item git config user.name "your\_user\_name"
+\item git config user.email "your\_email"
+\item git push origin --tags
+\end{enumerate}
+\end{frame}
+
+
+\section{Conclusion}
+\begin{frame}\frametitle{}
+\begin{itemize}
+\item Run all commands from above from terminal
+\item Vscode with Git Example
+\item Forking and Pull Request Example(consider .ssh/config file)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Learning Github Resources Links}
+\begin{itemize}
+\item \href{https://git-scm.com/doc}{Official Git Documentation}
+\item \href{https://skills.github.com/}{GitHub Skills} 
+\item \href{https://www.atlassian.com/git/tutorials}{Git Basics Tutorial} 
+\item \href{https://learngitbranching.js.org/}{Interactive Git Branching Tutorial} 
+\item \href{https://www.youtube.com/watch?v=RGOj5yH7evk}{Git and GitHub for Beginners - Crash Course}    
+\end{itemize}
+\end{frame}
+
+\end{document}
