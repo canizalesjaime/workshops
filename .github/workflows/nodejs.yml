@@ -108,7 +108,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build Docker image
-        run: docker build -f ./.devcontainer/ci-cd.Dockerfile -t ci-cd-workshop .\ci-cd-workshop
+        run: docker build -f ./.devcontainer/ci-cd.Dockerfile -t ci-cd-workshop ./ci-cd-workshop
       - name: Run Docker container
         run: |
           docker run -d \
