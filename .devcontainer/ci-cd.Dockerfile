@@ -10,9 +10,9 @@ WORKDIR /workspace
 
 EXPOSE 3000 4000 5432
 
-# COPY start.sh /start.sh
-# RUN chmod +x /start.sh
-# CMD ["/start.sh"]
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+CMD ["/start.sh"]
 
 
 # FROM ubuntu:latest

@@ -120,13 +120,6 @@ jobs:
             -p 5432:5432 \
             my-app
 
-      - name: Import tables to database
-        run: |
-          docker exec my-app-container bash -c "
-          chmod +x ./ci-cd-workshop/start.sh &&
-          ./ci-cd-workshop/start.sh"
-
-
       - name: Wait for PostgreSQL to be ready
         run: |
           until docker exec my-app-container pg_isready -U postgres; do
@@ -141,7 +134,6 @@ jobs:
             npm install
           "
 
-
       # - name: Start backend
       #   run: |
       #     docker exec -d my-app-container bash -c "
@@ -155,3 +147,10 @@ jobs:
       #       cd /workspace/ci-cd-workshop/frontend &&
       #       npm start
       #     "
+
+
+        #     - name: Import tables to database
+        # run: |
+        #   docker exec my-app-container bash -c "
+        #   chmod +x ./ci-cd-workshop/start.sh &&
+        #   ./ci-cd-workshop/start.sh"
