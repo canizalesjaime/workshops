@@ -1,0 +1,131 @@
+# name: Node.js CI/CD
+
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     services:
+#       postgres:
+#         image: postgres:16
+#         env:
+#           POSTGRES_USER: postgres
+#           POSTGRES_PASSWORD: hello1234
+#           POSTGRES_DB: postgres
+#         ports:
+#           - 5432:5432
+#         options: >-
+#           --health-cmd="pg_isready"
+#           --health-interval=10s
+#           --health-timeout=5s
+#           --health-retries=5
+
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '18'
+
+#     - name: Install dependencies
+#       run: npm install
+
+#     - name: Wait for PostgreSQL to be ready
+#       run: |
+#         until pg_isready -h localhost -p 5432; do
+#           echo "Waiting for PostgreSQL to be ready..."
+#           sleep 2
+#         done
+
+#     - name: Run DB migrations (if any)
+#       run: |
+#         node migrate.js
+
+#     - name: Build frontend
+#       run: |
+#         cd frontend
+#         npm install
+    
+#     - name: Install Heroku CLI
+#       run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      
+    
+#     # - name: Run tests
+#     #   env:
+#     #     DATABASE_URL: postgres://postgres:hello1234@localhost:5432/postgres
+#     #   run: npm test
+
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: build
+
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+    
+#     - name: Install Heroku CLI
+#       run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+#     - name: Deploy Backend to Heroku
+#       uses: akhileshns/heroku-deploy@v3.12.12
+#       with:
+#         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+#         heroku_app_name: app-backend1
+#         heroku_email: "canizales.jaime16@gmail.com"
+
+#     - name: Deploy Frontend to Heroku
+#       uses: akhileshns/heroku-deploy@v3.12.12
+#       with:
+#         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+#         heroku_app_name: app-frontend1
+#         heroku_email: "canizales.jaime16@gmail.com"
+#         appdir: frontend
+
+
+# Docker version of same project ##############################################
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t my-app .
+
+      - name: Run Docker container
+        run: |
+          docker run -d \
+            --name my-app-container \
+            -e POSTGRES_USER=postgres \
+            -e POSTGRES_PASSWORD=hello1234 \
+            -e POSTGRES_DB=postgres \
+            -p 5432:5432 \
+            my-app
+
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          until docker exec my-app-container pg_isready -U postgres; do
+            echo "Waiting for PostgreSQL to be ready..."
+            sleep 2
+          done
+
+      - name: Install frontend dependencies
+        run: docker exec my-app-container pwd && cd frontend && npm install

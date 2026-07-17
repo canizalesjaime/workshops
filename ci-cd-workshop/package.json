@@ -1,0 +1,24 @@
+{
+    "name": "weekly-scheduler",
+    "version": "1.0.0",
+    "description": "Node.js project for weekly schedule and to-do list with Express and PostgreSQL",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.17.1",
+        "pg": "^8.5.1",
+        "nodemon": "^2.0.22"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    },
+    "author": "",
+    "license": "ISC"
+}
