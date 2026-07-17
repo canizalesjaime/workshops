@@ -127,4 +127,4 @@ jobs:
           done
 
       - name: Install frontend dependencies
-        run: docker exec my-app-container pwd && cd frontend && npm install
+        run: docker exec my-app-container pwd && cd ci-cd-workshop/frontend && npm install
