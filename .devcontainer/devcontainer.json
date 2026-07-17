@@ -6,7 +6,7 @@
         "dockerfile": "./haskell.Dockerfile"
     },
 
-    "forwardPorts": [3000],
+    "forwardPorts": [3000, 4000, 5432],
     
     "containerEnv": {
         "DISPLAY": "host.docker.internal:0.0",
