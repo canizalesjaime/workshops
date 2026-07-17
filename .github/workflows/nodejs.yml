@@ -138,19 +138,19 @@ jobs:
             npm install
           "
 
-      # - name: Start backend
-      #   run: |
-      #     docker exec -d my-app-container bash -c "
-      #       cd /workspace/ci-cd-workshop/backend &&
-      #       npm run dev
-      #     "
+      - name: Start backend
+        run: |
+          docker exec -d my-app-container bash -c "
+            cd /workspace/backend &&
+            npm run dev
+          "
 
-      # - name: Start frontend
-      #   run: |
-      #     docker exec -d my-app-container bash -c "
-      #       cd /workspace/ci-cd-workshop/frontend &&
-      #       npm start
-      #     "
+      - name: Start frontend
+        run: |
+          docker exec -d my-app-container bash -c "
+            cd /workspace/frontend &&
+            npm start
+          "
 
 
         #     - name: Import tables to database
