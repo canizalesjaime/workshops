@@ -1,9 +1,10 @@
 {
-    //"postStartCommand":run some arbitrary cvommands before you start container
-    "name": "Docker-Workshop",
+    //"postStartCommand":run some arbitrary commands before you start container
+    "name": "Workshop",
     //"image":<add image from dockerhub> you must remove the build in the line below if you do this
     "build" : {
-        "dockerfile": "./haskell.Dockerfile"
+        "dockerfile": "./ci-cd.Dockerfile",
+        "context": "../ci-cd-workshop"
     },
 
     "forwardPorts": [3000, 4000, 5432],

@@ -128,3 +128,9 @@ jobs:
 
       - name: Install frontend dependencies
         run: docker exec my-app-container pwd && cd ci-cd-workshop/frontend && npm install
+
+      - name: Start application
+        run: |
+          docker exec my-app-container bash -c "
+          chmod +x ./ci-cd-workshop/start.sh &&
+          ./ci-cd-workshop/start.sh"

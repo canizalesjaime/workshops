@@ -4,7 +4,7 @@
 
 ## Steps to run project in devcontainers commands
 1. cd ```\workspace```
-2. ```pg_ctlcluster 16 main start & sudo -u postgres psql & ALTER USER postgres PASSWORD 'hello1234'; & psql -U postgres -h localhost```
+2. ```pg_ctlcluster 16 main start && sudo -u postgres psql && ALTER USER postgres PASSWORD 'hello1234'; && psql -U postgres -h localhost```
 3. ```node migrate.js```
 4. ```npm run dev```
 5. open new terminal
