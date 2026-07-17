@@ -11,8 +11,8 @@ COPY . .
 EXPOSE 3000 4000 5432
 
 #COPY start.sh /start.sh
-RUN chmod +x /workspace/start.sh
-CMD ["/workspace/start.sh"]
+# RUN chmod +x /workspace/start.sh
+# CMD ["/workspace/start.sh"]
 
 
 # FROM ubuntu:latest

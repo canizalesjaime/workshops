@@ -120,16 +120,18 @@ jobs:
             -p 5432:5432 \
             my-app
 
+      - name: Import tables to database
+        run: |
+          docker exec my-app-container bash -c "
+          chmod +x /workspace/start.sh &&
+          ./ci-cd-workshop/start.sh"
+
       - name: Wait for PostgreSQL to be ready
         run: |
           until docker exec my-app-container pg_isready -U postgres; do
             echo "Waiting for PostgreSQL to be ready..."
             sleep 2
           done
-
-
-      # - name: Install frontend dependencies
-      #   run: docker exec my-app-container pwd && cd ci-cd-workshop/frontend && npm install
 
       - name: Install frontend dependencies
         run: |
@@ -152,9 +154,3 @@ jobs:
             npm start
           "
 
-
-        #     - name: Import tables to database
-        # run: |
-        #   docker exec my-app-container bash -c "
-        #   chmod +x ./ci-cd-workshop/start.sh &&
-        #   ./ci-cd-workshop/start.sh"
