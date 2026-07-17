@@ -2,7 +2,7 @@ FROM jaimec21/node-psql:latest
 
 WORKDIR /workspace
 
-# COPY . .
+COPY . .
 # RUN npm install 
 # WORKDIR frontend
 # RUN npm install 
