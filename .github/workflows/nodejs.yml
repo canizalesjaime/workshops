@@ -134,7 +134,7 @@ jobs:
       - name: Install frontend dependencies
         run: |
           docker exec my-app-container bash -c "
-            cd /workspace/ci-cd-workshop/frontend &&
+            cd /workspace/frontend &&
             npm install
           "
 
