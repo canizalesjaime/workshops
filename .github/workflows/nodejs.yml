@@ -120,11 +120,11 @@ jobs:
             -p 5432:5432 \
             my-app
 
-      - name: Import tables to database
-        run: |
-          docker exec my-app-container bash -c "
-          chmod +x /workspace/start.sh &&
-          /workspace/start.sh"
+      # - name: Import tables to database
+      #   run: |
+      #     docker exec my-app-container bash -c "
+      #     chmod +x /workspace/start.sh &&
+      #     /workspace/start.sh"
 
       - name: Wait for PostgreSQL to be ready
         run: |
