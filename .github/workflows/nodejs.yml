@@ -109,7 +109,7 @@ jobs:
 
       - name: Build Docker image
         run: docker build -f ./.devcontainer/ci-cd.Dockerfile -t my-app ./ci-cd-workshop
-        
+
       - name: Run Docker container
         run: |
           docker run -d \
@@ -120,7 +120,7 @@ jobs:
             -p 5432:5432 \
             my-app
 
-        - name: Import tables to database
+      - name: Import tables to database
         run: |
           docker exec my-app-container bash -c "
           chmod +x ./ci-cd-workshop/start.sh &&
