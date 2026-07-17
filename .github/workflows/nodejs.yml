@@ -124,7 +124,7 @@ jobs:
         run: |
           docker exec my-app-container bash -c "
           chmod +x /workspace/start.sh &&
-          ./ci-cd-workshop/start.sh"
+          /workspace/start.sh"
 
       - name: Wait for PostgreSQL to be ready
         run: |
