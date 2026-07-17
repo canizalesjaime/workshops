@@ -128,15 +128,15 @@ jobs:
           done
 
 
-      - name: Install frontend dependencies
-        run: docker exec my-app-container pwd && cd ci-cd-workshop/frontend && npm install
-
       # - name: Install frontend dependencies
-      #   run: |
-      #     docker exec my-app-container bash -c "
-      #       cd /workspace/ci-cd-workshop/frontend &&
-      #       npm install
-      #     "
+      #   run: docker exec my-app-container pwd && cd ci-cd-workshop/frontend && npm install
+
+      - name: Install frontend dependencies
+        run: |
+          docker exec my-app-container bash -c "
+            cd /workspace/ci-cd-workshop/frontend &&
+            npm install
+          "
 
       # - name: Start backend
       #   run: |
