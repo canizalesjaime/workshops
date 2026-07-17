@@ -3,7 +3,7 @@
     "name": "Docker-Workshop",
     //"image":<add image from dockerhub> you must remove the build in the line below if you do this
     "build" : {
-        "dockerfile": "./Dockerfile_haskell"
+        "dockerfile": "./haskell.Dockerfile"
     },
 
     "forwardPorts": [3000],
